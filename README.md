@@ -3,7 +3,7 @@ a simple chrome extension to show a warning when you visit a website that stores
 
 ## install:
 
-download zip and unzip folder
+clone git repo, or download zip (from "clone or download" button) and unzip folder
 
 open chrome://extensions
 
