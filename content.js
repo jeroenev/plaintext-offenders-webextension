@@ -14,11 +14,12 @@ if (!document.getElementById('crx_plaintext_warning')) {
     st.fontStyle = "italic";
     st.position = "fixed";
     st.fontSize = "18pt"
+    st.zIndex = "999999999999999"
     div.onclick = function(element) {
         div.style.display = "none";
     };
-    document.body.style.webkitTransform = "translateY(" + toolbarHeight + "px)";
-    document.documentElement.appendChild(div);
+    let documentBody = document.getElementsByTagName('body')[0]
+    documentBody.appendChild(div);
 } else {
     document.getElementById('crx_plaintext_warning').style.display = "block"
 }
