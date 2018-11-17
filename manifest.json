@@ -1,6 +1,6 @@
 {
     "name": "PlainText Offenders",
-    "version": "1.0",
+    "version": "1.0.1",
     "description": "Alert when current website stores passwords insecurely!",
     "permissions": [
         "storage",
