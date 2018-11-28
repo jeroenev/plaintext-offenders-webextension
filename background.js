@@ -2,9 +2,8 @@
 
 "use strict";
 
-(function(global)
-{
-  function updateOffendersList () {
+(function (global) {
+  function updateOffendersList() {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
@@ -36,30 +35,50 @@
       if (urldomains.length > 1) {
         base = urldomains[urldomains.length - 2] + "." + urldomains[urldomains.length - 1]
         chrome.storage.local.get(base, function (data) {
-          if (Object.keys(data).length) {
-            chrome.tabs.executeScript(
+          let key = Object.keys(data)
+          if (key.length) {
+            let url = data[key[0]]
+            chrome.tabs.executeScript(tab.id, {
+              code: 'var plaintext = "' + url + '";'
+            }, function() {
+              chrome.tabs.executeScript(
               tabId,
               { file: 'content.js' });
+            });
+            
           }
+
         });
       }
       if (urldomains.length > 2) {
         sub_base = urldomains[urldomains.length - 3] + "." + base
         chrome.storage.local.get(sub_base, function (data) {
-          if (Object.keys(data).length) {
-            chrome.tabs.executeScript(
+          let key = Object.keys(data)
+          if (key.length) {
+            let url = data[key[0]]
+            chrome.tabs.executeScript(tab.id, {
+              code: 'var plaintext = "' + url + '";'
+            }, function() {
+              chrome.tabs.executeScript(
               tabId,
               { file: 'content.js' });
+            });
           }
         });
       }
       if (urldomains.length > 3) {
         sub_sub_base = urldomains[urldomains.length - 4] + "." + sub_base
         chrome.storage.local.get(sub_sub_base, function (data) {
-          if (Object.keys(data).length) {
-            chrome.tabs.executeScript(
+          let key = Object.keys(data)
+          if (key.length) {
+            let url = data[key[0]]
+            chrome.tabs.executeScript(tab.id, {
+              code: 'var plaintext = "' + url + '";'
+            }, function() {
+              chrome.tabs.executeScript(
               tabId,
               { file: 'content.js' });
+            });
           }
         });
       }
