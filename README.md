@@ -1,5 +1,5 @@
-# plaintext-offenders-chrome
-a simple chrome extension to show a warning when you visit a website that stores passwords insecurely
+# plaintext-offenders-webextension
+a simple Browser extension to show a warning when you visit a website that stores passwords insecurely
 
 ## Download for Chrome:
 chrome store: https://chrome.google.com/webstore/detail/plaintext-offenders/ldkbhdleljlodldlbacdhmdiimmmldml
