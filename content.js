@@ -24,6 +24,7 @@ if (!document.getElementById('crx_plaintext_warning')) {
     st.fontStyle = "italic";
     st.position = "fixed";
     st.fontSize = "18pt"
+    link.fontSize = "18pt"
     st.zIndex = "999999999999999"
     div.onclick = function(element) {
         div.style.display = "none";
