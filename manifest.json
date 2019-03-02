@@ -5,6 +5,7 @@
     "permissions": [
         "storage",
         "tabs",
+        "<all_urls>"
     ],
     "background": {
         "scripts": [
