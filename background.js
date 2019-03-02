@@ -18,14 +18,13 @@
           [key, garbage] = key.split('/')
           offenders_dict[key] = value;
         });
-        chrome.storage.local.set({'offenders': offenders_dict});
-        removeReformedOffenders();
+        removeReformedOffenders(offenders_dict);
       }
     }
     xhr.open("GET", "https://raw.githubusercontent.com/plaintextoffenders/plaintextoffenders/master/offenders.csv", true);
     xhr.send();
   }
-  function removeReformedOffenders() {
+  function removeReformedOffenders(offenders) {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
@@ -33,16 +32,13 @@
         let reformed_list_raw = xhr.responseText;
         let reformed_list = reformed_list_raw.split('\n')
         reformed_list.shift();
-        chrome.storage.local.get('offenders', function (data) {
-          let offenders = data['offenders']
-          reformed_list.forEach(function (item) {
-            let key, value, garbage;
-            [key, value] = item.split(',');
-            [key, garbage] = key.split('/')
-            delete offenders[key]
-          });
-          chrome.storage.local.set({'offenders': offenders});
-        })
+        reformed_list.forEach(function (item) {
+          let key, value, garbage;
+          [key, value] = item.split(',');
+          [key, garbage] = key.split('/')
+          delete offenders[key]
+        });
+        chrome.storage.local.set({'offenders': offenders});
       }
     }
     xhr.open("GET", "https://raw.githubusercontent.com/plaintextoffenders/plaintextoffenders/master/reformed.csv", true);
